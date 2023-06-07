@@ -1,20 +1,35 @@
 package domain;
 
 public class Radio {
-    public int currentVolume;
+    private int currentStation;
+    private int currentVolume;
 
     public int getCurrentVolume() {
         return currentVolume;
     }
 
-    public void setCurrentVolume(int newCurrentVolume) {
-        if (newCurrentVolume < 0) {
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume > 100) {
             return;
         }
-        if (newCurrentVolume > 100) {
+        if (currentVolume < 0) {
             return;
         }
-        currentVolume = newCurrentVolume;
+        this.currentVolume = currentVolume;
+    }
+
+    public int getCurrentStation() {
+        return currentStation;
+    }
+
+    public void setCurrentStation(int currentStation) {
+        if (currentStation > 9) {
+            return;
+        }
+        if (currentStation < 0) {
+            return;
+        }
+        this.currentStation = currentStation;
     }
 
     public void increaseVolume() {
@@ -23,38 +38,25 @@ public class Radio {
         }
     }
 
-    public void soundReduction() {
+    public void reduceVolume() {
         if (currentVolume > 0) {
             currentVolume = currentVolume - 1;
         }
     }
 
-    public int currentStation;
-
-    public int getCurrentStation() {
-        return currentStation;
-    }
-
-    public void setCurrentStation(int newCurrentStation) {
-        if (newCurrentStation < 0) {
-            return;
+    public void nextStation() {
+        if (currentStation != 9) {
+            currentStation++;
+        } else {
+            currentStation = 0;
         }
-        if (newCurrentStation > 9) {
-            return;
+    }
+
+    public void prevStation() {
+        if (currentStation != 0) {
+            currentStation--;
+        } else {
+            currentStation = 9;
         }
-        currentStation = newCurrentStation;
-    }
-
-    public void nextCurrentStation() {
-        if (currentStation < 9) {
-            currentStation = currentStation + 1;
-        } else currentStation = 0;
-    }
-
-    public void prevCurrentStation() {
-        if (currentStation > 0) {
-            currentStation = currentStation - 1;
-        } else currentStation = 9;
     }
 }
-
