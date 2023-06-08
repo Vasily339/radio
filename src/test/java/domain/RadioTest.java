@@ -5,6 +5,187 @@ import org.junit.jupiter.api.Test;
 
 public class RadioTest {
     @Test
+    public void shouldSetStationPlus() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(5);
+        int expected = 5;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetMinStationPlus() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(-5);
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetMaxStationPlus() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(15);
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetAboveMinStationPlus() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(1);
+        int expected = 1;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetBelowMinStationPlus() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(-1);
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetBorderMinStationPlus() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(0);
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetAboveMaxStationPlus() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(10);
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetBelowMaxStationPlus() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(8);
+        int expected = 8;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetBorderMaxStationPlus() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(9);
+        int expected = 9;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldPlusStationX() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(6);
+        radio.nextStation();
+        int expected = 7;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldPlusBorderMinStationX() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(0);
+        radio.nextStation();
+        int expected = 1;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldPlusMinBorderStationX() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(1);
+        radio.nextStation();
+        int expected = 2;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldPlusBorderMaxStationX() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(9);
+        radio.nextStation();
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldPlusMaxBorderStationX() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(8);
+        radio.nextStation();
+        int expected = 9;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldMinusStationX() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(6);
+        radio.prevStation();
+        int expected = 5;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldBorderMinStationX() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(0);
+        radio.prevStation();
+        int expected = 9;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldMinBorderStationX() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(1);
+        radio.prevStation();
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldMaxBorderStationX() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(9);
+        radio.prevStation();
+        int expected = 8;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldBorderMaxStationX() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(8);
+        radio.prevStation();
+        int expected = 7;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void shouldSetStation() {
         Radio radio = new Radio();
         radio.setCurrentStation(6);
